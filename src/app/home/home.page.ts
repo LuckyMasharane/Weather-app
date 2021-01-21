@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl  } from '@angular/forms';
 import { WeatherService } from '../weather.service';
 
@@ -7,7 +7,8 @@ import { WeatherService } from '../weather.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+
   forecast: any;
   validations_form: FormGroup;
 
@@ -19,6 +20,10 @@ export class HomePage {
     });
     
     this.loadWeather(this.validations_form.value.city);
+  }
+
+  ngOnInit(){
+    
   }
 
   loadWeather(city){
